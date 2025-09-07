@@ -76,7 +76,7 @@ public class Main {
 
         System.out.print("Digite su peso en kg EJ 50: ");
         double peso = teclado.nextDouble();
-        System.out.print("Digite su altura en metros EJ 170: ");
+        System.out.print("Digite su altura en metros EJ 1,70:");
         double altura = teclado.nextDouble();
 
         double imc = peso / (altura * altura);
