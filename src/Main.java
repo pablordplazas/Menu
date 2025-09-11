@@ -106,7 +106,6 @@ public class Main {
         System.out.print("Digite su altura en metros EJ 1,70: ");
         double altura = teclado.nextDouble();
 
-        // Fórmula sencilla y básica
         double calorias = (peso * 25) + (altura * 100);
 
         System.out.println("Según su peso y altura, usted debería consumir alrededor de: "
