@@ -7,23 +7,25 @@ public class Main {
 
         do {
             System.out.println("===== MENÚ PRINCIPAL =====");
-            System.out.println("1. Lanzar 3 Dados");
-            System.out.println("2. Lanzar 2 Dados");
+            System.out.println("1. Lanzar 2 Dados");
+            System.out.println("2. Lanzar 3 Dados");
             System.out.println("3. Calcular el IMC");
-            System.out.println("4. Salir");
-            System.out.println("5. Calorías recomendadas");
+            System.out.println("4. Calculadora de calorias");
+            System.out.println("5. Juego de Dados");
+            System.out.println("6. Salir");
             System.out.println("Seleccione una Opcion");
             opcion = teclado.nextInt();
 
             switch (opcion) {
-                case 1 -> Dados_3();
-                case 2 -> Dados_2();
+                case 1 -> Dados_2();
+                case 2 -> Dados_3();
                 case 3 -> IMC();
-                case 4 -> System.out.println("Saliendo del programa.....");
-                case 5 -> Calculador_Calorias();
+                case 4 -> Calculador_Calorias();
+                case 5 -> Juego_Dados();
+                case 6 -> System.out.println("Saliendo del programa.....");
                 default -> System.out.println("Opcion Invalida, Intente de Nuevo");
             }
-        } while (opcion != 4);
+        } while (opcion != 6);
     }
 
     public static void Dados_3(){
@@ -97,6 +99,67 @@ public class Main {
             System.out.println("Obesidad Extrema");
         }
     }
+    public static void Juego_Dados() {
+        int Da1, Da2, SumaDa1 = 0, SumaDa2 = 0;
+        Random aleatorio = new Random();
+
+        System.out.println("HAY 6 reglas importantes:");
+        System.out.println("1. El juego será de 2 jugadores y elegirán si quieren ser el jugador 1 o el jugador 2.");
+        System.out.println("2. El puntaje de todos empieza en 0.");
+        System.out.println("3. El dado debe ser de 6 caras solamente.");
+        System.out.println("4. Si te sale 1 en el dado, se restará 1 punto.");
+        System.out.println("5. Si sale de 2 a 6, se suman los puntos normalmente.");
+        System.out.println("6. Si alguno de los jugadores supera al otro por 3 puntos o más, se declara ganador automáticamente.");
+        System.out.println("---------------------------------------------");
+
+        for (int i = 0; i < 20; i++) {
+            Da1 = aleatorio.nextInt(6) + 1;
+            Da2 = aleatorio.nextInt(6) + 1;
+
+
+            if (Da1 == 1) {
+                SumaDa1 -= 1;
+            } else {
+                SumaDa1 += Da1;
+            }
+
+            if (Da2 == 1) {
+                SumaDa2 -= 1;
+            } else {
+                SumaDa2 += Da2;
+            }
+
+            if (Math.abs(SumaDa1 - SumaDa2) >= 3) {
+                System.out.println("---------------------------------------------");
+                if (SumaDa1 - SumaDa2 >= 3) {
+                    System.out.println("¡El Jugador #1 ha superado al Jugador #2 por 3 o más puntos!");
+                    System.out.println("El Jugador #1 GANA con: " + SumaDa1 + " puntos.");
+                } else {
+                    System.out.println("¡El Jugador #2 ha superado al Jugador #1 por 3 o más puntos!");
+                    System.out.println("El Jugador #2 GANA con: " + SumaDa2 + " puntos.");
+                }
+
+                System.out.println("Resultados totales:");
+                System.out.println("Jugador #1: " + SumaDa1 + " puntos.");
+                System.out.println("Jugador #2: " + SumaDa2 + " puntos.");
+            }
+        }
+
+        System.out.println("---------------------------------------------");
+        if (SumaDa1 > SumaDa2) {
+            System.out.println("El Jugador #1 GANA con: " + SumaDa1 + " puntos.");
+        } else if (SumaDa2 > SumaDa1) {
+            System.out.println("El Jugador #2 GANA con: " + SumaDa2 + " puntos.");
+        } else {
+            System.out.println("Hay un empate entre los jugadores.");
+        }
+
+        System.out.println("Resultados totales:");
+        System.out.println("Jugador #1: " + SumaDa1 + " puntos.");
+        System.out.println("Jugador #2: " + SumaDa2 + " puntos.");
+    }
+
+
 
     public static void Calculador_Calorias() {
         Scanner teclado = new Scanner(System.in);
